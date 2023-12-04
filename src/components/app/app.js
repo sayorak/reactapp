@@ -14,7 +14,7 @@ import ItemList from "../item-list";
 import ItemDetails, {Record} from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
 import ErrorBoundry from "../error-boundry";
-
+import {PersonList, PlanetList, StarshipList, PersonDetails, StarshipDetails, PlanetDetails} from "../sw-components";
 
 
 
@@ -37,7 +37,7 @@ export default class App extends Component{
     render() {
         const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
-        const { getPerson,
+        /*const { getPerson,
             getStarship,
             getPersonImage,
             getStarshipImage,
@@ -60,7 +60,7 @@ export default class App extends Component{
             <Record field="model" label="Model"/>
             <Record field="length" label="Length"/>
             <Record field="costInCredits" label="Cost"/>
-        </ItemDetails>;
+        </ItemDetails>;*/
 
         return (
             <ErrorBoundry>
@@ -71,20 +71,28 @@ export default class App extends Component{
                         </div>
                     </div>
 
+                    <PersonDetails itemId={11} />
+                    <StarshipDetails itemId={5} />
+                    <PlanetDetails itemId={9} />
 
-                    <ItemList
-                        getData={getAllPeople}
-                        onItemSelected={() => {}}>
-
+                    <PersonList>
                         { ({name}) => <span>{name}</span> }
-                    </ItemList>
+                    </PersonList>
 
-                    <ItemList
+                    <StarshipList>
+                        { ({name}) => <span>{name}</span> }
+                    </StarshipList>
+
+                    <PlanetList>
+                        { ({name}) => <span>{name}</span> }
+                    </PlanetList>
+
+                    {/*<ItemList
                         getData={getAllPlanets}
                         onItemSelected={() => {}}>
 
                         { ({name}) => <span>{name}</span> }
-                    </ItemList>
+                    </ItemList>*/}
                 </div>
             </ErrorBoundry>
         );
